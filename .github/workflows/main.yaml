@@ -1,3 +1,5 @@
+name: Build and Push to ECR
+
 on:
   push:
     branches:
@@ -11,5 +13,23 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Build Docker Image
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to ECR
+        run: |
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <154256403936>.dkr.ecr.us-east-1.amazonaws.com
+
+      - name: Build Image
         run: docker build -t week4-mini-project .
+
+      - name: Tag Image
+        run: docker tag week4-mini-project:latest <154256403936>.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
+
+      - name: Push to ECR
+        run: docker push <154256403936>.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
+
