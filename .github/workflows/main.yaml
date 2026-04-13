@@ -28,8 +28,8 @@ jobs:
         run: docker build -t week4-mini-project .
 
       - name: Tag Image
-        run: docker tag week4-mini-project:latest <154256403936>.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
+        run: docker tag week4-mini-project:latest 154256403936.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
 
       - name: Push to ECR
-        run: docker push <154256403936>.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
+        run: docker push 154256403936.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
 
