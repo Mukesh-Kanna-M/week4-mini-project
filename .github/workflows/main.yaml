@@ -22,7 +22,7 @@ jobs:
 
       - name: Login to ECR
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <154256403936>.dkr.ecr.us-east-1.amazonaws.com
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 154256403936.dkr.ecr.us-east-1.amazonaws.com
 
       - name: Build Image
         run: docker build -t week4-mini-project .
