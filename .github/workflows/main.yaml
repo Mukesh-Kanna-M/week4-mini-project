@@ -41,6 +41,6 @@ jobs:
       
       - name: Delpoy to EKS
         run: |
-          kubectl apply -f ./
+          kubectl apply -f .github/workflows/main.yaml/
           kubectl get all  
           
