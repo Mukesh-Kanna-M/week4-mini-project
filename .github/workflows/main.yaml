@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+env:
+  AWS_REGION: us-east-1 
+  CLUSTER_NAME: week4-mini-project
 
 jobs:
   build:
@@ -41,6 +44,6 @@ jobs:
       
       - name: Delpoy to EKS
         run: |
-          kubectl apply -f deploymeny.yaml \
+          kubectl apply -f deploymeny.yaml .
           kubectl get all  
           
