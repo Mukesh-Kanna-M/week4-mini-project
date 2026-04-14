@@ -41,6 +41,6 @@ jobs:
       
       - name: Delpoy to EKS
         run: |
-          kubectl apply -f deployment.yaml/
+          kubectl apply -f ./
           kubectl get all  
           
