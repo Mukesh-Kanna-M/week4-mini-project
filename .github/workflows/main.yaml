@@ -32,4 +32,15 @@ jobs:
 
       - name: Push to ECR
         run: docker push 154256403936.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
-
+      
+      - name: Update kubeconfig 
+        run: |
+          aws eks update-kubeconfig \
+          --region $AWS_REGION \
+          --name $CLUSTER_NAME
+      
+      - name: Delpoy to EKS
+        run: |
+          kubectl apply -f deployment.yaml/
+          kubectl get all  
+          

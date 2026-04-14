@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: week4-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: week4-app
+  template:
+    metadata:
+      labels:
+        app: week4-app
+    spec:
+      containers:
+      - name: week4-container
+        image: 154256403936.dkr.ecr.us-east-1.amazonaws.com/week4-mini-project:latest
+        ports:
+        - containerPort: 80
